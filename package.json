@@ -1,0 +1,11 @@
+{
+  "name": "stonic-website",
+  "version": "1.0.0",
+  "description": "Official commercial sales website for Stonic AI - Created by Punit Pawar",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Punit Pawar <India>",
+  "license": "ISC"
+}
