@@ -84,7 +84,7 @@
   <header class="sticky top-0 z-50 glass-panel border-b border-white/[0.08]">
     <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-3 group">
-        <img src="./assets/images/logo_withoutbackground.png" alt="Stonic Logo" class="w-10 h-10 object-contain drop-shadow-[0_0_12px_rgba(16,185,129,0.3)]">
+        <img src="/logo.png" alt="Stonic Logo" class="w-10 h-10 object-contain drop-shadow-[0_0_12px_rgba(16,185,129,0.3)]">
         <div>
           <span class="font-display font-bold text-xl tracking-tight text-white group-hover:text-emerald-400 transition-colors">STONIC AI</span>
           <span class="block text-[9px] uppercase tracking-widest text-emerald-500 font-mono font-semibold">Payment & Account Information</span>
@@ -140,18 +140,34 @@
           <div class="mt-6 flex flex-col sm:flex-row items-center gap-5">
             <!-- QR Code -->
             <div class="w-36 h-36 bg-white p-2 rounded-2xl shrink-0 flex items-center justify-center border-2 border-emerald-500/50 shadow-[0_0_25px_rgba(16,185,129,0.25)]">
-              <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=upi://pay?pa=punitpawar.stonic@upi&pn=Punit%20Pawar&am=3999&cu=INR" alt="UPI QR Code" class="w-full h-full object-contain">
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=upi://pay?pa=9356791463-2@ybl&pn=Punit%20Pawar&am=3999&cu=INR" alt="UPI QR Code" class="w-full h-full object-contain">
             </div>
 
             <!-- UPI Details -->
             <div class="space-y-3 w-full">
-              <div class="space-y-1">
-                <span class="text-[11px] uppercase tracking-wider text-gray-400 font-mono">UPI ID:</span>
-                <div class="p-3 rounded-xl bg-black/50 border border-white/10 flex items-center justify-between gap-2">
-                  <span class="font-mono text-sm font-bold text-emerald-400" id="upiIdVal">punitpawar.stonic@upi</span>
-                  <button type="button" onclick="copyText('punitpawar.stonic@upi', 'UPI ID copied!')" class="p-1.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 transition-colors" title="Copy UPI ID">
-                    <i data-lucide="copy" class="w-4 h-4"></i>
-                  </button>
+              <div class="space-y-2.5">
+                <div class="space-y-1">
+                  <span class="text-[11px] uppercase tracking-wider text-purple-400 font-mono font-bold flex items-center gap-1.5">
+                    <span>PhonePe UPI:</span>
+                  </span>
+                  <div class="p-2.5 rounded-xl bg-black/50 border border-purple-500/30 flex items-center justify-between gap-2">
+                    <span class="font-mono text-xs font-bold text-purple-300" id="phonepeVal">9356791463-2@ybl</span>
+                    <button type="button" onclick="copyText('9356791463-2@ybl', 'PhonePe UPI copied!')" class="p-1.5 rounded-lg bg-purple-500/15 hover:bg-purple-500/30 text-purple-300 transition-colors" title="Copy PhonePe UPI">
+                      <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="space-y-1">
+                  <span class="text-[11px] uppercase tracking-wider text-cyan-400 font-mono font-bold flex items-center gap-1.5">
+                    <span>Paytm UPI:</span>
+                  </span>
+                  <div class="p-2.5 rounded-xl bg-black/50 border border-cyan-500/30 flex items-center justify-between gap-2">
+                    <span class="font-mono text-xs font-bold text-cyan-300" id="paytmVal">pawar-parvati@ptyes</span>
+                    <button type="button" onclick="copyText('pawar-parvati@ptyes', 'Paytm UPI copied!')" class="p-1.5 rounded-lg bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 transition-colors" title="Copy Paytm UPI">
+                      <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                    </button>
+                  </div>
                 </div>
               </div>
               <div class="space-y-1">
@@ -162,9 +178,9 @@
           </div>
         </div>
 
-        <button type="button" onclick="copyText('punitpawar.stonic@upi', 'UPI ID copied to clipboard!')" class="w-full py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-display font-extrabold text-sm transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)] flex items-center justify-center gap-2">
+        <button type="button" onclick="copyText('9356791463-2@ybl', 'PhonePe UPI ID copied!')" class="w-full py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-display font-extrabold text-sm transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)] flex items-center justify-center gap-2">
           <i data-lucide="copy" class="w-4 h-4"></i>
-          <span>Copy UPI ID (punitpawar.stonic@upi)</span>
+          <span>Copy PhonePe UPI (9356791463-2@ybl)</span>
         </button>
       </div>
 
@@ -207,6 +223,10 @@
             </div>
 
             <div class="p-3 rounded-xl bg-black/40 border border-white/5 flex items-center justify-between">
+              <span class="text-gray-400">Account Status:</span>
+              <span class="text-amber-400 font-mono text-xs">Direct UPI Recommended</span>
+            </div>
+            <div class="p-3 rounded-xl bg-black/40 border border-white/5 flex items-center justify-between hidden">
               <span class="text-gray-400">Account No:</span>
               <div class="flex items-center gap-2">
                 <span class="text-emerald-400 font-bold tracking-wider" id="bankAcc">41029485721</span>
