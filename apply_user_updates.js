@@ -3,12 +3,12 @@ const path = require('path');
 
 const siteDir = 'C:/Users/Punit/Desktop/stonicai-website';
 
-// 1. Copy logo.png over iu.png so founder photo is Stonic Logo
+// 1. Copy logo.png over iu.png so founder photo is Victor AI Logo
 const logoPath = path.join(siteDir, 'logo.png');
 const iuPath = path.join(siteDir, 'iu.png');
 if (fs.existsSync(logoPath)) {
   fs.copyFileSync(logoPath, iuPath);
-  console.log('Replaced iu.png with Stonic logo.png!');
+  console.log('Replaced iu.png with Victor AI logo.png!');
 }
 
 // 2. Update index.html

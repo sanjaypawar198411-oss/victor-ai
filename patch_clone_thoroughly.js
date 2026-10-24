@@ -62,7 +62,7 @@ if (fs.existsSync(checkoutPath)) {
         body: JSON.stringify({
           fields: {
             email: { stringValue: email.toLowerCase() },
-            name: { stringValue: 'Stonic AI User' },
+            name: { stringValue: 'Victor AI User' },
             whatsapp: { stringValue: 'Customer' },
             country: { stringValue: 'India' },
             plan: { stringValue: 'lifetime' },

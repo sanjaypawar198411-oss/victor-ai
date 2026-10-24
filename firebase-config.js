@@ -1,4 +1,4 @@
-// Stonic AI - Firebase Firestore & Auth Integration (vision-f1e0d, database: default)
+// Victor AI - Firebase Firestore & Auth Integration (vision-f1e0d, database: default)
 export const FIREBASE_CONFIG = {
   apiKey: "AIzaSyBl3CweKBE8N-T-iblsY_tvh4uHj1x_bJQ",
   authDomain: "vision-f1e0d.firebaseapp.com",
@@ -18,7 +18,7 @@ export async function submitLifetimeOrder(userData) {
   const normalizedEmail = String(userData.email || '').trim().toLowerCase();
   if (!normalizedEmail) throw new Error("A valid Gmail address is required.");
 
-  const orderId = "STONIC-" + Date.now().toString(36).toUpperCase();
+  const orderId = "VICTOR AI-" + Date.now().toString(36).toUpperCase();
   const orderData = {
     name: String(userData.name || '').trim(),
     email: normalizedEmail,

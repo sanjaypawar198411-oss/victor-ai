@@ -23,7 +23,7 @@ const targets = [
   'wa.me',
   '0300',
   '0329',
-  'support@stonicai.com',
+  'support@victorai.com',
   'inventorusman',
   'iu.png'
 ];

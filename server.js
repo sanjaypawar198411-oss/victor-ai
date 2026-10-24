@@ -73,7 +73,7 @@ const server = http.createServer((req, res) => {
 
 server.listen(PORT, () => {
   console.log(`\n======================================================`);
-  console.log(`  Stonic AI (Official Clone) running at:`);
+  console.log(`  Victor AI (Official Clone) running at:`);
   console.log(`  http://localhost:${PORT}`);
   console.log(`  http://localhost:${PORT}/checkout.html`);
   console.log(`  http://localhost:${PORT}/download.html`);
