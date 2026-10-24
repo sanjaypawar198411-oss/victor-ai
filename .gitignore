@@ -1,5 +1,6 @@
-node_modules
-index.raw.html
-assets_list.json
+node_modules/
+*.log
 .DS_Store
 Thumbs.db
+PAYMENT_DETAILS.txt
+upload_release.js

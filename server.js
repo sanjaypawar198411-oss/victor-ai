@@ -2,82 +2,61 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const PORT = process.env.PORT || 4000;
-const PUBLIC_DIR = __dirname;
+const PORT = process.env.PORT || 1827;
 
 const MIME_TYPES = {
-  '.html': 'text/html; charset=utf-8',
-  '.css': 'text/css; charset=utf-8',
-  '.js': 'text/javascript; charset=utf-8',
-  '.mjs': 'text/javascript; charset=utf-8',
-  '.json': 'application/json',
+  '.html': 'text/html; charset=UTF-8',
+  '.js': 'text/javascript; charset=UTF-8',
+  '.css': 'text/css; charset=UTF-8',
+  '.json': 'application/json; charset=UTF-8',
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
   '.jpeg': 'image/jpeg',
   '.webp': 'image/webp',
+  '.gif': 'image/gif',
   '.svg': 'image/svg+xml',
   '.ico': 'image/x-icon',
-  '.wav': 'audio/wav',
-  '.mp3': 'audio/mpeg',
-  '.mp4': 'video/mp4',
-  '.yml': 'text/yaml'
+  '.woff': 'font/woff',
+  '.woff2': 'font/woff2',
+  '.ttf': 'font/ttf',
+  '.eot': 'application/vnd.ms-fontobject'
 };
 
 const server = http.createServer((req, res) => {
-  // Normalize URL
-  let parsedUrl = req.url.split('?')[0];
-  if (parsedUrl === '/') parsedUrl = '/index.html';
+  let reqPath = req.url.split('?')[0].split('#')[0];
+  let filePath = path.join(__dirname, reqPath);
 
-  let filePath = path.join(PUBLIC_DIR, decodeURIComponent(parsedUrl));
-
-  // Security check: ensure path stays inside PUBLIC_DIR
-  if (!filePath.startsWith(PUBLIC_DIR)) {
-    res.writeHead(403);
-    res.end('Forbidden');
-    return;
-  }
-
-  // If path is a directory, look for index.html
+  // If path is a directory or root, serve index.html
   if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
+    filePath = path.join(filePath, 'index.html');
+  } else if (!fs.existsSync(filePath) && fs.existsSync(filePath + '.html')) {
+    filePath = filePath + '.html';
+  } else if (!fs.existsSync(filePath) && fs.existsSync(path.join(filePath, 'index.html'))) {
     filePath = path.join(filePath, 'index.html');
   }
 
-  // SPA fallback: If no extension and doesn't exist, serve index.html
-  if (!fs.existsSync(filePath) && !path.extname(filePath)) {
-    filePath = path.join(PUBLIC_DIR, 'index.html');
+  // Fallback to root index.html if not found (SPA fallback)
+  if (!fs.existsSync(filePath)) {
+    filePath = path.join(__dirname, 'index.html');
   }
 
-  fs.readFile(filePath, (err, data) => {
+  const ext = path.extname(filePath).toLowerCase();
+  const contentType = MIME_TYPES[ext] || 'application/octet-stream';
+
+  fs.readFile(filePath, (err, content) => {
     if (err) {
-      if (err.code === 'ENOENT') {
-        res.writeHead(404, { 'Content-Type': 'text/plain' });
-        res.end('404 Not Found: ' + parsedUrl);
-      } else {
-        res.writeHead(500, { 'Content-Type': 'text/plain' });
-        res.end('Server Error: ' + err.code);
-      }
-      return;
+      res.writeHead(500);
+      res.end(`Server Error: ${err.code}`);
+    } else {
+      res.writeHead(200, {
+        'Content-Type': contentType,
+        'Access-Control-Allow-Origin': '*'
+      });
+      res.end(content, 'utf-8');
     }
-
-    const ext = path.extname(filePath).toLowerCase();
-    const contentType = MIME_TYPES[ext] || 'application/octet-stream';
-
-    res.writeHead(200, {
-      'Content-Type': contentType,
-      'Access-Control-Allow-Origin': '*',
-      'Cache-Control': 'no-cache'
-    });
-    res.end(data);
   });
 });
 
 server.listen(PORT, () => {
-  console.log(`\n======================================================`);
-  console.log(`  Victor AI (Official Clone) running at:`);
-  console.log(`  http://localhost:${PORT}`);
-  console.log(`  http://localhost:${PORT}/checkout.html`);
-  console.log(`  http://localhost:${PORT}/download.html`);
-  console.log(`  http://localhost:${PORT}/terms.html`);
-  console.log(`  http://localhost:${PORT}/privacy.html`);
-  console.log(`======================================================\n`);
+  console.log(`Server running at http://localhost:${PORT}/`);
 });

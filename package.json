@@ -1,11 +1,22 @@
 {
-  "name": "stonic-website",
+  "name": "stonicai-clone",
   "version": "1.0.0",
-  "description": "Official commercial sales website for Victor AI - Created by Punit Pawar",
+  "description": "Exact clone of Victor AI (victorai.com) website",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
-  "author": "Punit Pawar <India>",
-  "license": "ISC"
+  "keywords": [
+    "stonic",
+    "ai",
+    "jarvis",
+    "clone",
+    "website"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer-core": "^25.12.0",
+    "sharp": "^0.35.5"
+  }
 }
